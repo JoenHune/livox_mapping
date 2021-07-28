@@ -378,7 +378,7 @@ void KD_TREE::Nearest_Search(PointType point, int k_nearest, PointVector& Neares
     return;
 }
 
-int KD_TREE::Add_Points(PointVector & PointToAdd, bool downsample_on){
+int KD_TREE::Add_Points(const PointVector & PointToAdd, bool downsample_on){
     int NewPointSize = PointToAdd.size();
     int tree_size = size();
     BoxPointType Box_of_Point;

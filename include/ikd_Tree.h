@@ -10,6 +10,8 @@
 #include <algorithm>
 #include <memory.h>
 
+#include <pcl/point_types.h>
+
 #define EPSS 1e-6
 #define Minimal_Unbalanced_Tree_Size 10
 #define Multi_Thread_Rebuild_Point_Num 1500
@@ -222,7 +224,7 @@ private:
     static bool point_cmp_z(PointType a, PointType b);
 
 public:
-    KD_TREE(float delete_param = 0.5, float balance_param = 0.6, float box_length = 0.2);
+    explicit KD_TREE(float delete_param = 0.5, float balance_param = 0.6, float box_length = 0.2);
 
     ~KD_TREE();
 
@@ -245,7 +247,7 @@ public:
     void Nearest_Search(PointType point, int k_nearest, PointVector &Nearest_Points, vector<float> &Point_Distance,
                         double max_dist = INFINITY);
 
-    int Add_Points(PointVector &PointToAdd, bool downsample_on);
+    int Add_Points(const PointVector &PointToAdd, bool downsample_on);
 
     void Add_Point_Boxes(vector<BoxPointType> &BoxPoints);
 
